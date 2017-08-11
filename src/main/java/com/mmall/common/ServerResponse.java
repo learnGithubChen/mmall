@@ -1,10 +1,14 @@
 package com.mmall.common;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
  * Created by peterchen on 2017/8/10.
  */
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
     private int status;
     private String msg;
@@ -30,6 +34,7 @@ public class ServerResponse<T> implements Serializable {
         this.msg = msg;
     }
 
+    @JsonIgnore
     public boolean isSuccess(){
         return this.status == ResponseCode.SUCCESS.getCode();
     }
