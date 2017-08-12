@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -119,7 +118,7 @@ public class UserController {
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
 
         if(currentUser == null){
-            return ServerResponse.createByErrorMesage(ResponseCode.NEED_LOGIN.getCode(),"未登陆需要强制登陆，staatus=10");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"未登陆需要强制登陆，staatus=10");
         }
         return iUserService.getInformation(currentUser.getId());
     }
