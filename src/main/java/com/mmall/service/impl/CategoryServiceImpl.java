@@ -20,9 +20,9 @@ import java.util.Set;
  * Created by peterchen on 2017/8/12.
  */
 @Service("iCategoryService")
-public class CategoryServiceIml implements ICategoryService {
+public class CategoryServiceImpl implements ICategoryService {
 
-    private Logger logger = LoggerFactory.getLogger(CategoryServiceIml.class);
+    private Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryMapper categoryMapper;
