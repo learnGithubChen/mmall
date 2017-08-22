@@ -104,7 +104,7 @@ public class UserController {
         }
         user.setId(currentUser.getId());
         user.setUsername(currentUser.getUsername());
-        ServerResponse<User> response = iUserService.updateInfomation(user);
+        ServerResponse<User> response = iUserService.updateInformation(user);
         if(response.isSuccess()){
             response.getData().setUsername(currentUser.getUsername());
             session.setAttribute(Const.CURRENT_USER,response.getData());
@@ -116,9 +116,8 @@ public class UserController {
     @ResponseBody
     public ServerResponse<User> get_information(HttpSession session){
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
-
         if(currentUser == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"未登陆需要强制登陆，staatus=10");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"未登陆需要强制登陆，status=10");
         }
         return iUserService.getInformation(currentUser.getId());
     }

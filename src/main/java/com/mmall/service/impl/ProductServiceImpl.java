@@ -53,7 +53,7 @@ public class ProductServiceImpl implements IProductService {
                 if(rowCount>0){
                     return ServerResponse.createBySuccess("更新产品成功");
                 }
-                return ServerResponse.createBySuccess("更新产品成功");
+                return ServerResponse.createBySuccess("更新产品失败");
             }else{
                 int rowCount = productMapper.insert(product);
                 if(rowCount>0){
@@ -106,7 +106,7 @@ public class ProductServiceImpl implements IProductService {
         productDetailVo.setStatus(product.getStatus());
         productDetailVo.setStock(product.getStock());
 
-        productDetailVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix","http://img.happymmall.com/"));
+        productDetailVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix","http://image.imooc.com/"));
 
         Category category = categoryMapper.selectByPrimaryKey(product.getCategoryId());
         if(category == null){

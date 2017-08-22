@@ -177,7 +177,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ServerResponse<User> updateInfomation(User user) {
+    public ServerResponse<User> updateInformation(User user) {
         int resultCount = userMapper.checkEmailByUserId(user.getEmail(),user.getId());
         if(resultCount>0){
             return ServerResponse.createByErrorMessage("email已经存在，请更换email再尝试更新");
